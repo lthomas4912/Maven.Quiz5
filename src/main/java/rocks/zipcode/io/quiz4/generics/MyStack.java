@@ -1,25 +1,41 @@
 package rocks.zipcode.io.quiz4.generics;
 
+import java.util.EmptyStackException;
+import java.util.Stack;
+
 /**
  * @author leon on 11/12/2018.
  */
-public class MyStack<SomeType> {
+public class MyStack<SomeType> extends Group {
+
+    private Stack<SomeType> stack = new Stack<>();
+
     public MyStack() {
-        throw new UnsupportedOperationException("Method not yet implemented");
+    }
+    public MyStack(Stack stack){
+        this.stack = stack;
     }
 
     public Boolean isEmpty() {
-        return null;
+        return stack.isEmpty();
     }
 
     public void push(SomeType i) {
+          stack.push(i);
     }
 
     public SomeType peek() {
-        throw new UnsupportedOperationException("Method not yet implemented");
+        if(stack.isEmpty()){
+            return null;
+        }
+        return stack.peek();
     }
 
     public SomeType pop() {
-        return null;
+        if(stack.isEmpty()){
+            throw new EmptyStackException();
+        }else{
+            return stack.pop();
+            }
+        }
     }
-}
